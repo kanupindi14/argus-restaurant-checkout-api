@@ -1,0 +1,118 @@
+Test Epic: Checkout System API Automation
+
+Epic Description:
+This epic covers all functional, edge case, and error handling test scenarios for the restaurant checkout system API.
+
+
+1) Test Plan: Order Processing (Happy Path)
+   JIRA Test Case: Checkout API - Calculate Total Bill
+   Test Case ID: TC-001
+   Test Summary: Verify that the API correctly calculates the total bill for a group order.
+   Test Type: Functional
+   Priority: High
+
+   Test Steps
+	-Given a group of 4 places an order
+	-When they order 4 starters, 4 mains, and 4 drinks
+	-Then the API should return the correct total with a 10% service charge
+
+
+2) Test Plan: Discount Handling
+   JIRA Test Case: Checkout API - Apply Drink Discount
+   Test Case ID: TC-002
+   Test Summary: Verify that the API correctly applies a 30% discount on drinks ordered before 19:00.
+   Test Type: Functional
+   Priority: High
+
+   Test Steps
+	-Given a group of 2 places an order at 18:30
+	-When they order 1 starter, 2 mains, and 2 drinks
+	-Then the API should apply a 30% discount on the drinks
+	-When two more people join the group at 20:00
+	-And they order 2 mains and 2 drinks
+	-Then the API should calculate the final bill correctly, applying the discount only to drinks ordered before 19:00
+
+
+3) Test Plan: Order Modification (Item Cancellation)
+   JIRA Test Case: Checkout API - Modify Order
+   Test Case ID: TC-003
+   Test Summary: Verify that the total bill updates correctly when an order is modified.
+   Test Type: Functional
+   Priority: Medium
+
+   Test Steps
+	-Given a group of 4 places an order
+	-When they order 4 starters, 4 mains, and 4 drinks
+	-Then the API should return the correct total
+	-When one member cancels their order
+	-Then the API should recalculate the total correctly and adjust the service charge accordingly
+
+
+4) Test Plan: Edge Case - Zero Quantity Order
+   JIRA Test Case: Checkout API - Handle Zero Quantity Order
+   Test Case ID: TC-004
+   Test Summary: Verify that the API returns an error when all ordered items have zero quantity.
+   Test Type: Edge Case
+   Priority: High
+
+   Test Steps
+	-Given a group of 3 places an order
+	-When they order 0 starters, 0 mains, and 0 drinks
+	-Then the API should return an error message "Invalid order"
+
+
+5) Test Plan: Error Case - Negative Values
+   JIRA Test Case: Checkout API - Handle Negative Item Quantities
+   Test Case ID: TC-005
+   Test Summary: Verify that the API does not accept negative quantities.
+   Test Type: Edge Case
+   Priority: High
+
+   Test Steps
+	-Given a group of 2 places an order
+	-When they order -1 starters, 2 mains, and 1 drink
+	-Then the API should return an error message "Invalid quantity"
+
+
+6) Test Plan: Order Cancellation
+JIRA Test Case: Checkout API - Cancel Order
+Test Case ID: TC-006
+Test Summary: Verify that canceling an order removes all charges, including service charge.
+Test Type: Functional
+Priority: High
+
+Test Steps
+	-Given a group of 4 places an order
+	-When they order 4 starters, 4 mains, and 4 drinks
+	-Then the API should return the correct total
+	-When they cancel the entire order
+	-Then the API should return "Order canceled" and total should be 0
+
+
+7) Test Plan: Multiple People Ordering Separately
+   JIRA Test Case: Checkout API - Merging Separate Orders in a Group
+   Test Case ID: TC-007
+   Test Summary: Verify whether separate orders in a group are merged or handled individually.
+   Test Type: Business Logic
+   Priority: Medium
+
+   Test Steps
+	-Given two people place an order
+	-When they order 2 mains and 2 drinks
+	-Then the API should calculate the total separately
+	-When two more people place a separate order within the same group
+	-Then the API should clarify whether the new order is merged or handled separately
+
+
+8) Test Plan: System Load Test
+   JIRA Test Case: Checkout API - Handle Large Orders
+   Test Case ID: TC-008
+   Test Summary: Verify how the API handles a large number of simultaneous orders.
+   Test Type: Performance
+   Priority: High
+
+   Test Steps
+	-Given a group of 50 places an order
+	-When they order 50 starters, 50 mains, and 50 drinks
+	-Then the API should calculate the total within acceptable response time
+
