@@ -1,0 +1,11 @@
+bin/
+obj/
+TestResults/
+.config/
+.env
+.vscode/
+.idea/
+*.user
+*.suo
+*.log
+Utils/config.json
