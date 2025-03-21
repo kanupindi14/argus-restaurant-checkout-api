@@ -10,7 +10,7 @@ namespace ArgusRestaurentCheckoutAutomation.Pages
 
         public BasePage()
         {
-            var configContent = File.ReadAllText("Utils/config.json");
+            var configContent = File.ReadAllText("Utilities/Config.json");
             var json = JObject.Parse(configContent);
             var baseUrl = json["baseUrl"]?.ToString() ?? "http://localhost:5000";
             Client = new RestClient(baseUrl);
