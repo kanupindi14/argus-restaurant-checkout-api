@@ -6,7 +6,7 @@ Feature: Checkout API - Handle Zero Quantity Order
 
   Scenario: Reject zero quantity order
     Given a group of 3 places an order
-    When they order 0 starters, 0 mains, and 0 drinks
+    When they order 0 starters, 0 mains, and 0 drink
     Then the API should return an error message "Invalid order"
 
 # JIRA Test Case: Checkout API - Handle Negative Item Quantities

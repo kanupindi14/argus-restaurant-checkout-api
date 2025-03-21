@@ -21,7 +21,7 @@ namespace ArgusRestaurentCheckoutAutomation.StepDefinitions
             mockServerProcess.Start();
         }
 
-         [BeforeScenario]
+        [BeforeScenario]
         public void BeforeScenario()
         {
             Console.WriteLine("[HOOK] Starting new scenario...");

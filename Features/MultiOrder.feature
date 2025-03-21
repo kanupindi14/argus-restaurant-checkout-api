@@ -6,7 +6,7 @@ Feature: Checkout API - Merging Separate Orders in a Group
 
   Scenario: Handle separate orders in the same group
     Given two people place an order
-    When they order 2 mains and 2 drinks
+    When they place an order with 2 mains and 2 drinks
     Then the API should calculate the total separately
     When two more people place a separate order within the same group
     Then the API should clarify whether the new order is merged or handled separately

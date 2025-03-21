@@ -10,5 +10,5 @@ Feature: Checkout API - Apply Drink Discount
 
   Scenario: Add late joiners after 19:00
     Given two more people join the group at "20:00"
-    And they order 2 mains and 2 drinks
+    When they order 2 mains and 2 drinks
     Then the API should calculate the final bill correctly, applying the discount only to drinks ordered before 19:00

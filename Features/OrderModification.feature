@@ -6,7 +6,7 @@ Feature: Checkout API - Modify Order
 
   Scenario: Modify order after cancellation
     Given a group of 4 places an order
-    When they order 4 starters, 4 mains, and 4 drinks
+    When they place an order 4 starters, 4 mains, and 4 drinks_
     Then the API should return the correct total
     When one member cancels their order
     Then the API should recalculate the total correctly and adjust the service charge accordingly

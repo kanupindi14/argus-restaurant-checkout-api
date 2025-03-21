@@ -4,7 +4,6 @@ let orders = {}; // To store active orders in memory
 
 const server = http.createServer((req, res) => {
   if (req.method === "POST" && req.url === "/checkout") {
-    const { starters = 0, mains = 0, drinks = 0 } = JSON.parse(body);
 
     let body = "";
 
@@ -15,7 +14,7 @@ const server = http.createServer((req, res) => {
     req.on("end", () => {
       const orderId = `${Date.now()}_${Math.floor(Math.random() * 1000)}`;
       const requestData = JSON.parse(body);
-      const { starters, mains, drinks, orderTime } = requestData;
+      const { starters = 0, mains = 0, drinks = 0, orderTime } = requestData;
 
       if (
         typeof starters !== "number" ||
