@@ -1,11 +1,9 @@
 {
-  "plugins": [
-    {
-      "name": "SpecFlow.Allure",
-      "type": "Generator"
-    }
-  ],
   "runtime": {
     "stopAtFirstError": false
+  },
+  "generator": {
+    "allowDebugGeneratedFiles": true,
+    "skipParallelizableMarkerForTags": []
   }
 }
